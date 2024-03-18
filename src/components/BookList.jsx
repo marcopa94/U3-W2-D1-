@@ -25,7 +25,8 @@ class BookList extends Component {
         }
       })
       .then((data) => {
-        data.map((e) => console.log(e.comment));
+        this.setState({ currentComment: data });
+        console.log(data);
       })
       .catch((err) => console.log(err));
   };
@@ -33,10 +34,11 @@ class BookList extends Component {
   componentDidMount() {
     this.fetchFilm();
   }
-  componentDidUpdate() {
-    this.fetchFilm();
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.currentasin !== this.state.currentasin) {
+      this.fetchFilm();
+    }
   }
-
   render() {
     const filteredBooks = this.props.books.filter((b) =>
       b.title.toLowerCase().includes(this.state.searchQuery.toLowerCase())
@@ -71,6 +73,7 @@ class BookList extends Component {
                   </ListGroup.Item>
                   <ListGroup.Item>{this.state.currentBook.title}</ListGroup.Item>
                   <ListGroup.Item>{this.state.currentasin}</ListGroup.Item>
+                  <ListGroup.Item>{}</ListGroup.Item>
                 </ListGroup>
               </div>
             )}
@@ -82,7 +85,6 @@ class BookList extends Component {
 
   updateCurrentBook = (book) => {
     this.setState({ currentBook: book, currentasin: book.asin });
-    console.log("ciao");
   };
 }
 
