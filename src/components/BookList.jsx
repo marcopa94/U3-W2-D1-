@@ -73,7 +73,14 @@ class BookList extends Component {
                   </ListGroup.Item>
                   <ListGroup.Item>{this.state.currentBook.title}</ListGroup.Item>
                   <ListGroup.Item>{this.state.currentasin}</ListGroup.Item>
-                  <ListGroup.Item>{}</ListGroup.Item>
+                  <ListGroup.Item>
+                    {this.state.currentComment.map((comment, index) => (
+                      <div key={index}>
+                        <p>{comment.comment}</p>
+                        <p>By: {comment.author}</p>
+                      </div>
+                    ))}
+                  </ListGroup.Item>
                 </ListGroup>
               </div>
             )}
