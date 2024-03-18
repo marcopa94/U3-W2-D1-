@@ -67,12 +67,16 @@ class BookList extends Component {
           <Col xs={6} md={6}>
             {this.state.currentBook && (
               <div>
-                <ListGroup>
+                <ListGroup className="d-flex position-fixed top-25">
                   <ListGroup.Item>
                     <h5>Libro Corrente</h5>
                   </ListGroup.Item>
-                  <ListGroup.Item>{this.state.currentBook.title}</ListGroup.Item>
-                  <ListGroup.Item>{this.state.currentasin}</ListGroup.Item>
+                  <ListGroup.Item>
+                    <c>{this.state.currentBook.title}</c>
+                  </ListGroup.Item>
+                  <ListGroup.Item>
+                    <b>Ecco un po di commenti</b>
+                  </ListGroup.Item>
                   <ListGroup.Item>
                     {this.state.currentComment.map((comment, index) => (
                       <div key={index}>
